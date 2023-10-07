@@ -82,7 +82,7 @@ class Game
     if @board.word_complete?
       puts 'You guessed the word!'
       puts "It was #{@board.secret_word}."
-      exit
+      play_again if @board.word_complete?
     elsif !@board.word_complete?
       @board.game_over?(guesses_left)
     end
@@ -130,6 +130,13 @@ class Game
     else
       puts 'No saved game found. Start a new game.'
     end
+  end
+
+  def play_again
+    puts 'Would you like to play again? y/n'
+    answer = gets.chomp.downcase
+    Game.new if answer == 'y'
+    exit if answer == 'n'
   end
 end
 
@@ -180,9 +187,10 @@ class Board
   def game_over?(guesses_left)
     @guesses_left = guesses_left
     puts "Game Over! The secret word was #{secret_word}" if guesses_left <= 0
+    play_again if guesses_left <= 0
   end
 
-  def start_new
+  def play_again
     puts 'Would you like to play again? y/n'
     answer = gets.chomp.downcase
     Game.new if answer == 'y'
