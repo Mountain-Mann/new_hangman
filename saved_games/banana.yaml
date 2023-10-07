@@ -1,0 +1,22 @@
+---
+:player: !ruby/object:Player {}
+:board: !ruby/object:Board
+  word:
+  - b
+  - a
+  - "n"
+  - a
+  - "n"
+  - a
+  board:
+  - _
+  - a
+  - _
+  - a
+  - _
+  - a
+  guesses_left: 6
+:guesses_left: 6
+:guesses:
+- w
+- a
